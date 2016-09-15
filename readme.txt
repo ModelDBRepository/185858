@@ -48,3 +48,5 @@ For questions/comments email:
    or
   robert dot mcdougal at yale dot edu
 
+20160915 This updated version from the Lytton lab allows their models
+which contain misc.mod and misc.h to compile on the mac.
