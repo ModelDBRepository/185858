@@ -50,3 +50,5 @@ For questions/comments email:
 
 20160915 This updated version from the Lytton lab allows their models
 which contain misc.mod and misc.h to compile on the mac.
+
+20171010 An update from Robert McDougal to run on mswin as well as linux, mac.
