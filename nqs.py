@@ -1,7 +1,6 @@
 from neuron import h
 h.load_file("nqs.hoc")
 import numpy
-from vector import *
 
 NQS = h.NQS
 nqsdel = h.nqsdel

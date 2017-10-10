@@ -2,20 +2,16 @@ from neuron import *
 import sys
 import os
 import string
-h("strdef simname, allfiles, simfiles, output_file, datestr, uname, osname, comment")
+h("strdef simname, allfiles, simfiles, output_file, datestr, uname, comment")
 h.simname=simname = "onepyr"
 h.allfiles=allfiles = "pyinit.py geom.py onepyr.py"
 h.simfiles=simfiles = "pyinit.py geom.py onepyr.py"
 h("runnum=1")
-runnum = 1.0
 h.datestr=datestr = "10dec15"
 h.output_file=output_file = "data/15dec31.2"
 h.uname=uname = "x86_64"
-h.osname=osname="linux"
 h("templates_loaded=0")
-templates_loaded=0
 h("xwindows=1.0")
-xwindows = 1.0
 h.xopen("nrnoc.hoc")
 h.xopen("init.hoc")
 h("proc setMemb () { }") # so e_pas will not get modified
@@ -23,14 +19,13 @@ from neuron import h
 from pyinit import *
 from labels import *
 from geom import *
-from vector import *
 from nqs import *
 import random
 from pylab import *
 from datetime import datetime
 from neuron import rxd
-from multiprocessing import Pool
-
+import shutil
+Vector = h.Vector
 # nsubseg == number of subsegments per segment, subsegum == subseg size in microns
 # nsubseg > 0 takes precedence over subsegum
 nsubseg,subsegum = dconf['nsubseg'],dconf['subsegum'] 
@@ -58,9 +53,9 @@ safemkdir('meminput')
 def backupcfg (simstr):
   safemkdir('backupcfg')
   fout = 'backupcfg/' + simstr + '.cfg'
-  if os.path.exists(fout): os.system('rm ' + fout)  
+  if os.path.exists(fout): os.remove(fout)  
   try:
-    os.system('cp ' + fcfg + ' ' + fout) # fcfg created in geom.py via conf.py
+    shutil.copy2(fcfg, fout) # fcfg created in geom.py via conf.py
   except:
     pass
 
@@ -360,8 +355,7 @@ def setupWMInputs ():
   # backup the nqm file for later retrieval
   fnqwm = 'meminput/' + simstr + '_nqm.nqs'
   if os.path.exists(fnqwm):
-    cmd = 'rm ' + fnqwm
-    os.system(cmd)
+    os.remove(fnqwm)
   nqm.sv(fnqwm)
   if verbose:
     print 'this is nqm:'

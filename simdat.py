@@ -3,7 +3,7 @@ import os
 import string
 from neuron import *
 from datetime import datetime
-h("strdef simname, allfiles, simfiles, output_file, datestr, uname, osname, comment")
+h("strdef simname, allfiles, simfiles, output_file, datestr, uname, comment")
 h.simname=simname = "mtlhpc"
 h.allfiles=allfiles = "geom.hoc pyinit.py geom.py mpisim.py"
 h.simfiles=simfiles = "pyinit.py geom.py mpisim.py"
@@ -12,17 +12,14 @@ runnum = 1.0
 h.datestr=datestr = "10dec15"
 h.output_file=output_file = "data/15dec31.1"
 h.uname=uname = "x86_64"
-h.osname=osname="linux"
 h("templates_loaded=0")
 templates_loaded=0
 h("xwindows=1.0")
-xwindows = 1.0
 h.xopen("nrnoc.hoc")
 h.xopen("init.hoc")
 CTYPi = 50.0; STYPi = 12.0
 from pyinit import *
 from neuron import h, gui
-from vector import *
 from nqs import *
 from labels import *
 import random

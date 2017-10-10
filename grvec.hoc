@@ -97,9 +97,9 @@ begintemplate GRV
   double size[4],vsz[2],wvloc[4],x[4]
   objref glist, oglist, llist, tvec, ind, vec, vrtmp, tmpvec, tf1, tmpobj, apvb, ovb, printlist
   objref vite,scob,printlist,szstr[4],g,this,tmplist,panobj,panobjl,Xo,Yo,tmpfile, gcomms
-  strdef comment,recstr,grvecstr,readtag,rvvec_name,grep,tstr,tstr2,ddir,filter
+  strdef comment,recstr,grvecstr,readtag,rvvec_name,tstr,tstr2,ddir,filter
   strdef temp_string_,temp_string2_,output_file,s,filename,mesg,regexp
-  external sfunc,osname,vfile_line,vitem,uname,nil,simname,gnum,XO,YO,graphList,isassigned
+  external sfunc,vfile_line,vitem,uname,nil,simname,gnum,XO,YO,graphList,isassigned
   external isobj,isit,mso,msoptr,allocvecs,dealloc,tstop,method,cvode,show_panel,rv2,rv3,setfilt2
   external cvode_active,cvode_local,datestr,runnum,i1,graphItem,GRV,strm,objnum,DBL,dir2mf2
   external file_with_dot,count_substr,file_len,filname,dirname,dir,grv_,repl_mstr,pvout2,symb
@@ -138,7 +138,6 @@ proc init () { local flag,nopan
   onum=objnum(this)
 
   for ii=0,3 { szstr[ii] = new String() }
-  if (sfunc.substr(osname,"inux")==1) grep="grep -a" else grep="grep"
   readtag = "^//[:pbCM ]"  // regexp used to identify header in mixed binary files
   { szstr[0].s="Set xmin" szstr[1].s="Set xmax" szstr[2].s="Set ymin" szstr[3].s="Set ymax" }
   multi_files = 1 // set 0 to show individual segments of multi-seg files
@@ -280,7 +279,7 @@ proc fchooser () {
 proc newpan () { tmpobj=new GRV(-1) }
 
 //** read_vfile() creates a panattr object from information in a file
-// (uses grep to avoid loading big file)
+// (uses grep to avoid loading big file) (except it's not)
 // assumes file in tmpfile
 func read_vfile () { local flag, ii, sz, loc, mult, sze, cloc, segs
   if (numarg()>=2) if (strcmp(filename,$s1)==0) return 2 // check if file is already active 

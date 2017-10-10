@@ -25,7 +25,7 @@ if pc.id()==0:
   safemkdir('meminput')
 # MPI
 
-h("strdef simname, allfiles, simfiles, output_file, datestr, uname, osname, comment")
+h("strdef simname, allfiles, simfiles, output_file, datestr, uname, comment")
 h.simname=simname = "CaHDemo"
 h.allfiles=allfiles = "geom.hoc pyinit.py mpisim.py"
 h.simfiles=simfiles = "pyinit.py geom.py mpisim.py"
@@ -34,11 +34,9 @@ runnum = 1.0
 h.datestr=datestr = "15dec31"
 h.output_file=output_file = "data/15dec31.1"
 h.uname=uname = "x86_64"
-h.osname=osname="linux"
 h("templates_loaded=0")
 templates_loaded=0
 h("xwindows=1.0")
-xwindows = 1.0
 
 h.xopen("nrnoc.hoc")
 h.xopen("init.hoc")
@@ -55,7 +53,6 @@ pmat = numpy.zeros( (CTYPi, CTYPi) )
 synloc = numpy.zeros( (CTYPi, CTYPi) )
 
 from geom import *
-from vector import *
 from nqs import *
 import random
 from pylab import *
