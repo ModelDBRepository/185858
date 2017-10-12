@@ -54,6 +54,9 @@ loads the data and draws the output.
 
 To plot the output from this simulation, run the following:
 python -i simdat.py
+which will display results similar to figure 5 in the paper:
+<img src="./screenshot1.png" alt="screenshot1" width="550">
+
 
 Note: The -np 8 above specifies that mpiexec should use 8 cores. This
 number should change depending on your hardware setup. If changing 8
@@ -75,4 +78,9 @@ which contain misc.mod and misc.h to compile on the mac.
 20171010 An update from Robert McDougal to run on mswin as well as linux, mac.
 
 20171011 Thanks Adam Newton for noticing missing misc.h.  Added a screenshot.
+
+20171012 Adam supplied a misc.mod that helps simdat.py complete and
+Robert added a line to mpisim.py so it could run from Python with a
+command like:
+mpiexec -n 8 python mpisim.py netcfg.cfg
 </pre></html>

@@ -1,3 +1,4 @@
+from mpi4py import MPI
 from neuron import *
 import sys
 import os
