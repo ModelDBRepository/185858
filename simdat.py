@@ -27,6 +27,7 @@ from pylab import *
 import matplotlib.gridspec as gridspec
 import ConfigParser
 
+Vector=h.Vector
 newfigs=False
 dodrawbounds=True
 defbinsz=10
